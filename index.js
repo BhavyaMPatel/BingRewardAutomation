@@ -1,4 +1,5 @@
-const { Builder ,By, Browser} = require('selenium-webdriver');
+import { Builder,By,Browser } from "selenium-webdriver";
+import RandomQuery from "./RandomQuery.js";
 
 (async () => {
     const driver = await new Builder().forBrowser(Browser.EDGE).build();
@@ -15,20 +16,24 @@ const { Builder ,By, Browser} = require('selenium-webdriver');
 
 
         let element = await driver.findElement(By.id('sb_form_q'));
-        console.log(element);
-
-        await element.sendKeys('Surat Bullet Update');
+        await element.sendKeys('Update Password For NPM');
         await element.submit();
-        console.log("Searching And Sleeping ...")
-        element = await driver.findElement(By.id('sb_form_q'));
         await driver.sleep(3000);
+        console.log("Searching And Sleeping ...")
+
+        element = await driver.findElement(By.id('sb_form_q'));
+        await driver.sleep(1000);
         element.clear();
         await driver.sleep(3000);
         await element.sendKeys('Surat Indian Post HO');
+        await element.submit();
         await driver.sleep(3000);
+
     } finally {
         console.log("QUTI PASS");
-        // await driver.quit();
+        await driver.quit();
     }
 })();
+
+
 

@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "dependencies": {
     "selenium-webdriver": "^4.24.0"
   }
