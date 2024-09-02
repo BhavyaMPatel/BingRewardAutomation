@@ -1,5 +1,6 @@
 import { Builder,By,Browser } from "selenium-webdriver";
 import RandomQuery from "./RandomQuery.js";
+let len=RandomQuery.length;
 
 (async () => {
     const driver = await new Builder().forBrowser(Browser.EDGE).build();
@@ -16,20 +17,22 @@ import RandomQuery from "./RandomQuery.js";
 
 
         let element = await driver.findElement(By.id('sb_form_q'));
-        await element.sendKeys('Update Password For NPM');
-        await element.submit();
-        await driver.sleep(3000);
-        console.log("Searching And Sleeping ...")
 
-        element = await driver.findElement(By.id('sb_form_q'));
-        await driver.sleep(1000);
-        element.clear();
-        await driver.sleep(3000);
-        await element.sendKeys('Surat Indian Post HO');
-        await element.submit();
-        await driver.sleep(3000);
+            await element.sendKeys(RandomQuery[Math.floor(Math.random() * len) + 1]);
+            await element.submit();
+            await driver.sleep(3000);
+            console.log("Searching And All ...");
 
-    } finally {
+            for(let index=0;index<29;index++){
+                element = await driver.findElement(By.id('sb_form_q'));
+                element.clear();
+                await driver.sleep(3000);
+                await element.sendKeys(RandomQuery[Math.floor(Math.random() * len) + 1]);
+                await element.submit();
+                await driver.sleep(3000);
+            }
+    
+        } finally {
         console.log("QUTI PASS");
         await driver.quit();
     }
