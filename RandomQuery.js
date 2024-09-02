@@ -3,7 +3,7 @@ const RandomQuery = [
     "Best University In The World",
     "Ola Share Price",
     "What Is The Market Condition",
-    "Add More Query Here !!!"
+    "Add More Query Here !!! "
 ]
 
 export default RandomQuery;
